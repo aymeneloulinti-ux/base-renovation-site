@@ -1,15 +1,60 @@
-import type { Metadata } from "next";
-import "./globals.css";
+import { Analytics } from '@vercel/analytics/next'
+import type { Metadata, Viewport } from 'next'
+import { Inter, Fraunces } from 'next/font/google'
+import './globals.css'
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+})
+
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  variable: '--font-fraunces',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
-  title: "Roofing & Renovation Template",
-  description: "Reusable foundation for roofing and renovation websites.",
-};
+  title: 'Toiture & Rénovation — Couvreur premium à Bruxelles et en Wallonie',
+  description:
+    "Entreprise de toiture et de rénovation à Bruxelles et en Wallonie. Toiture, couverture, zinguerie, isolation, réparation et rénovation extérieure. Devis gratuit et travail soigné.",
+  generator: 'v0.app',
+  icons: {
+    icon: [
+      {
+        url: '/icon-light-32x32.png',
+        media: '(prefers-color-scheme: light)',
+      },
+      {
+        url: '/icon-dark-32x32.png',
+        media: '(prefers-color-scheme: dark)',
+      },
+      {
+        url: '/icon.svg',
+        type: 'image/svg+xml',
+      },
+    ],
+    apple: '/apple-icon.png',
+  },
+}
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export const viewport: Viewport = {
+  colorScheme: 'light',
+  themeColor: '#f2efe8',
+}
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode
+}>) {
   return (
-    <html lang="en" dir="ltr">
-      <body>{children}</body>
+    <html lang="fr" className={`${inter.variable} ${fraunces.variable} light bg-background`}>
+      <body className="font-sans antialiased">
+        {children}
+        {process.env.NODE_ENV === 'production' && <Analytics />}
+      </body>
     </html>
-  );
+  )
 }
