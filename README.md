@@ -1,34 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Roofing & Renovation Template
 
-## Getting Started
+Reusable Next.js foundation for client websites in the roofing and renovation space. This project currently contains framework scaffolding only; visual design, content, and reusable UI components are intentionally added later.
 
-First, run the development server:
+## Stack
+
+- Next.js App Router
+- React
+- TypeScript
+- Tailwind CSS
+- ESLint
+
+## Structure
+
+```text
+public/
+  assets/       Static images, logos, icons, and fonts
+src/
+  app/          App Router layouts, pages, route-level styles, and metadata
+  components/   Reusable UI components and future Lovable imports
+  data/         Client content and template configuration
+  lib/          Shared, framework-agnostic utilities
+  types/        Shared TypeScript contracts
+```
+
+Use the `@/*` alias for imports from `src`, for example `@/components/...` or `@/lib/...`.
+
+## Development
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run lint
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Lovable integration
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Place imported Lovable components in `src/components` and keep route composition in `src/app`. Preserve each component's client/server boundary with a file-level `"use client"` directive when required. Keep page-specific composition in the route folder rather than coupling imported components to a single client.
 
-## Learn More
+Move reusable content and configuration into `src/data`, shared contracts into `src/types`, framework-agnostic helpers into `src/lib`, and static files into `public/assets`. Import local code through the `@/*` alias so components can move between routes without changing project-relative paths.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Add a dependency only when an imported component actually requires it. Keep backend, database, authentication, and API concerns outside this template foundation until a client project explicitly needs them.
