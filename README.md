@@ -21,7 +21,7 @@ public/
   assets/       Reserved for client-specific static assets
 src/
   app/          Routes, layouts, metadata, API routes, robots, and sitemap
-  components/   Reusable UI, page sections, and imported Lovable components
+  components/   Reusable UI, page sections, and imported v0 components
   data/         Client content and template configuration
   lib/          Shared utilities, validation, site config, and email services
   types/        Shared TypeScript contracts
@@ -105,9 +105,9 @@ and `[Adresse]`. They are demonstration templates, not legal advice. Replace and
 company, hosting, privacy, retention, and contact information with the real client's details before
 production.
 
-## Lovable integration
+## v0 integration
 
-Place imported Lovable components in `src/components` and keep route composition in `src/app`.
+Place exported v0 components in `src/components` and keep route composition in `src/app`.
 Preserve each component's server/client boundary with a file-level `"use client"` directive when
 required. Keep reusable content in `src/data`, shared contracts in `src/types`, framework-agnostic
 helpers in `src/lib`, and static files in `public/assets` or `public/images` as appropriate.
