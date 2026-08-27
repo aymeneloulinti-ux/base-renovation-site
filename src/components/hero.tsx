@@ -42,7 +42,7 @@ export function Hero() {
           </p>
 
           <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <LinkButton href="#devis" size="lg">
+            <LinkButton href="/devis" size="lg">
               Demander un devis gratuit
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </LinkButton>

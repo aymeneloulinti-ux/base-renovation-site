@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
 import { Menu, Moon, Phone, Sun, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { LinkButton } from '@/components/link-button'
@@ -13,7 +14,7 @@ const NAV_LINKS = [
   { label: 'Zones', href: '#zones' },
 ]
 
-export function SiteHeader() {
+export function SiteHeader({ alwaysSolid = false }: { alwaysSolid?: boolean }) {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
 
@@ -50,17 +51,17 @@ export function SiteHeader() {
     <header
       className={cn(
         'fixed inset-x-0 top-0 z-50 transition-all duration-500',
-        scrolled
+        scrolled || alwaysSolid
           ? 'border-b border-border/70 bg-background/85 backdrop-blur-md'
           : 'border-b border-transparent bg-transparent',
       )}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5 md:h-20 lg:px-8">
-        <a href="#top" className="flex items-center gap-2.5" aria-label="Accueil — Maison Delcourt">
+        <Link href="/" className="flex items-center gap-2.5" aria-label="Accueil — Maison Delcourt">
           <span
             className={cn(
               'flex h-9 w-9 items-center justify-center rounded-sm transition-colors',
-              scrolled || open
+              scrolled || open || alwaysSolid
                 ? 'bg-foreground text-background'
                 : 'bg-white text-foreground dark:bg-black',
             )}
@@ -74,7 +75,7 @@ export function SiteHeader() {
             <span
               className={cn(
                 'font-serif text-lg font-semibold tracking-tight transition-colors',
-                scrolled || open ? 'text-foreground' : 'text-white dark:text-black',
+                scrolled || open || alwaysSolid ? 'text-foreground' : 'text-white dark:text-black',
               )}
             >
               Maison Delcourt
@@ -82,13 +83,15 @@ export function SiteHeader() {
             <span
               className={cn(
                 'text-[10px] uppercase tracking-[0.22em] transition-colors',
-                scrolled || open ? 'text-muted-foreground' : 'text-white/70 dark:text-black/70',
+                scrolled || open || alwaysSolid
+                  ? 'text-muted-foreground'
+                  : 'text-white/70 dark:text-black/70',
               )}
             >
               Toiture &amp; Rénovation
             </span>
           </span>
-        </a>
+        </Link>
 
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Navigation principale">
           {NAV_LINKS.map((link) => (
@@ -97,7 +100,7 @@ export function SiteHeader() {
               href={link.href}
               className={cn(
                 'text-sm transition-colors',
-                scrolled
+                scrolled || alwaysSolid
                   ? 'text-foreground/75 hover:text-foreground'
                   : 'text-white/80 hover:text-white dark:text-black/80 dark:hover:text-black',
               )}
@@ -112,7 +115,7 @@ export function SiteHeader() {
             href="tel:+3221234567"
             className={cn(
               'flex items-center gap-2 text-sm font-medium transition-colors',
-              scrolled
+              scrolled || alwaysSolid
                 ? 'text-foreground hover:text-accent'
                 : 'text-white hover:text-white/80 dark:text-black dark:hover:text-black/80',
             )}
@@ -120,7 +123,7 @@ export function SiteHeader() {
             <Phone className="h-4 w-4" />
             02 123 45 67
           </a>
-          <LinkButton href="#devis" variant={scrolled ? 'primary' : 'accent'}>
+          <LinkButton href="/devis" variant={scrolled ? 'primary' : 'accent'}>
             Demander un devis
           </LinkButton>
         </div>
@@ -130,7 +133,7 @@ export function SiteHeader() {
           onClick={toggleTheme}
           className={cn(
             'hidden h-9 w-9 items-center justify-center rounded-sm border transition-colors lg:flex',
-            scrolled
+            scrolled || alwaysSolid
               ? 'border-border text-foreground hover:bg-muted'
               : 'border-white/30 text-white hover:bg-white/10 dark:border-black/30 dark:text-black dark:hover:bg-black/10',
           )}
@@ -146,7 +149,7 @@ export function SiteHeader() {
           onClick={() => setOpen((v) => !v)}
           className={cn(
             'flex h-10 w-10 items-center justify-center rounded-sm transition-colors lg:hidden',
-            scrolled || open ? 'text-foreground' : 'text-white dark:text-black',
+            scrolled || open || alwaysSolid ? 'text-foreground' : 'text-white dark:text-black',
           )}
           aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
           aria-expanded={open}
@@ -192,7 +195,7 @@ export function SiteHeader() {
               <Phone className="h-4 w-4" />
               02 123 45 67
             </a>
-            <LinkButton href="#devis" onClick={() => setOpen(false)} size="lg" className="w-full">
+            <LinkButton href="/devis" onClick={() => setOpen(false)} size="lg" className="w-full">
               Demander un devis
             </LinkButton>
           </div>

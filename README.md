@@ -33,6 +33,34 @@ npm run lint
 npm run build
 ```
 
+## SEO
+
+The homepage includes canonical, Open Graph, Twitter/X, and LocalBusiness metadata. The generated
+SEO routes are available at `/robots.txt` and `/sitemap.xml`.
+
+Set `NEXT_PUBLIC_SITE_URL` in the deployment environment to the client's production URL. The
+default value is `https://www.maisondelcourt.be` for this demo.
+
+## Cookie consent
+
+The reusable `CookieConsent` component stores the visitor's choices in `localStorage`. Necessary
+cookies are always enabled; Analytics and Marketing are disabled by default and are only ready to
+be connected after explicit consent. Visitors can reopen the panel through `Gérer mes cookies` in
+the footer.
+
+## Quote requests
+
+Copy `.env.example` to `.env.local` and provide a Resend API key plus the recipient address:
+
+```bash
+RESEND_API_KEY=re_...
+CONTACT_EMAIL=contact@example.com
+```
+
+The form posts to `/api/quote`. The API key is read only by the server, and the sender address in
+`src/lib/send-quote-email.ts` should be replaced with a verified domain before production use.
+The dedicated form page is available at `/devis`.
+
 ## Lovable integration
 
 Place imported Lovable components in `src/components` and keep route composition in `src/app`. Preserve each component's client/server boundary with a file-level `"use client"` directive when required. Keep page-specific composition in the route folder rather than coupling imported components to a single client.

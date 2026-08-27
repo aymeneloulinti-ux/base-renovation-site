@@ -31,7 +31,7 @@ export function FinalCta() {
                   02 123 45 67
                 </LinkButton>
                 <LinkButton
-                  href="mailto:contact@maisondelcourt.be"
+                  href="/devis"
                   size="lg"
                   variant="outlineLight"
                   className="w-full sm:w-auto"

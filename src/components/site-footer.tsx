@@ -1,4 +1,5 @@
 import { Mail, MapPin, Phone } from 'lucide-react'
+import { CookiePreferencesButton } from '@/components/cookie-consent'
 
 const FOOTER_NAV = [
   {
@@ -46,7 +47,7 @@ export function SiteFooter() {
                 {col.links.map((link) => (
                   <li key={link}>
                     <a
-                      href="#"
+                      href={link === 'Demander un devis' ? '/devis' : '#'}
                       className="text-sm text-background/75 transition-colors hover:text-background"
                     >
                       {link}
@@ -99,6 +100,7 @@ export function SiteFooter() {
             <a href="#" className="transition-colors hover:text-background">
               Conditions générales
             </a>
+            <CookiePreferencesButton />
           </nav>
         </div>
       </div>

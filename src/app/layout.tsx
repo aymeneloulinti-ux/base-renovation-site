@@ -1,6 +1,7 @@
-import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Inter, Fraunces } from 'next/font/google'
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '@/lib/site-config'
+import { CookieConsent } from '@/components/cookie-consent'
 import './globals.css'
 
 const inter = Inter({
@@ -16,10 +17,41 @@ const fraunces = Fraunces({
 })
 
 export const metadata: Metadata = {
-  title: 'Toiture & Rénovation — Couvreur premium à Bruxelles et en Wallonie',
-  description:
-    "Entreprise de toiture et de rénovation à Bruxelles et en Wallonie. Toiture, couverture, zinguerie, isolation, réparation et rénovation extérieure. Devis gratuit et travail soigné.",
-  generator: 'v0.app',
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: `${SITE_NAME} — Couvreur à Bruxelles et en Wallonie`,
+    template: `%s | ${SITE_NAME}`,
+  },
+  description: SITE_DESCRIPTION,
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'fr_BE',
+    url: '/',
+    siteName: SITE_NAME,
+    title: `${SITE_NAME} — Couvreur à Bruxelles et en Wallonie`,
+    description: SITE_DESCRIPTION,
+    images: [
+      {
+        url: '/images/hero-roofing.png',
+        width: 1920,
+        height: 1080,
+        alt: 'Rénovation de toiture en ardoise à Bruxelles',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `${SITE_NAME} — Couvreur à Bruxelles et en Wallonie`,
+    description: SITE_DESCRIPTION,
+    images: ['/images/hero-roofing.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
   icons: {
     icon: [
       {
@@ -40,7 +72,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  colorScheme: 'light',
+  colorScheme: 'light dark',
   themeColor: '#f2efe8',
 }
 
@@ -53,7 +85,7 @@ export default function RootLayout({
     <html lang="fr" className={`${inter.variable} ${fraunces.variable} light bg-background`}>
       <body className="font-sans antialiased">
         {children}
-        {process.env.NODE_ENV === 'production' && <Analytics />}
+        <CookieConsent />
       </body>
     </html>
   )
