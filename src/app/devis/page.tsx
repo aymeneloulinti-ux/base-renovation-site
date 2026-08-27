@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import { QuoteForm } from '@/components/quote-form'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
@@ -16,10 +17,19 @@ export default function QuotePage() {
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader alwaysSolid />
-      <main className="px-5 pb-20 pt-28 md:pt-36 lg:px-8">
-        <div className="mx-auto max-w-3xl">
-          <div className="rounded-lg bg-foreground px-6 py-12 text-background md:px-14 md:py-16">
-            <div className="mx-auto max-w-2xl text-center">
+      <main className="relative isolate overflow-hidden px-5 pb-20 pt-28 md:pt-36 lg:px-8">
+        <Image
+          src="/images/hero-roofing.png"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="-z-20 object-cover"
+        />
+        <div className="absolute inset-0 -z-10 bg-foreground/65" />
+        <div className="relative mx-auto max-w-3xl">
+          <div className="relative overflow-hidden rounded-lg bg-foreground/90 px-6 py-12 text-background shadow-2xl backdrop-blur-[2px] md:px-14 md:py-16">
+            <div className="relative mx-auto max-w-2xl text-center">
               <p className="mb-4 text-xs font-medium uppercase tracking-[0.22em] text-accent">
                 Devis gratuit &amp; sans engagement
               </p>
