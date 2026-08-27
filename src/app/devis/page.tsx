@@ -23,7 +23,7 @@ export default function QuotePage() {
     <div className="min-h-screen bg-background">
       <SiteHeader alwaysSolid />
       <main className="relative isolate overflow-hidden px-5 pb-24 pt-28 md:pt-36 lg:px-8">
-        <Image src="/images/hero-roofing.png" alt="Toiture rénovée par Maison Delcourt" fill priority sizes="100vw" className="-z-20 object-cover" />
+        <Image src="/images/quote-background.png" alt="Façade et toiture rénovées d’une maison bruxelloise" fill priority sizes="100vw" className="-z-20 object-cover" />
         <div className="absolute inset-0 -z-10 bg-foreground/75" />
         <div className="relative mx-auto max-w-6xl">
           <div className="grid overflow-hidden rounded-lg border border-background/15 bg-foreground/95 shadow-2xl lg:grid-cols-[0.82fr_1.18fr]">
