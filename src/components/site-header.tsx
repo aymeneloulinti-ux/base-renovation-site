@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { Menu, Moon, Phone, Sun, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { LinkButton } from '@/components/link-button'
@@ -15,6 +16,7 @@ const NAV_LINKS = [
 ]
 
 export function SiteHeader({ alwaysSolid = false }: { alwaysSolid?: boolean }) {
+  const pathname = usePathname()
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
 
@@ -46,6 +48,8 @@ export function SiteHeader({ alwaysSolid = false }: { alwaysSolid?: boolean }) {
     document.documentElement.classList.toggle('light', !nextIsDark)
     window.localStorage.setItem('theme', nextIsDark ? 'dark' : 'light')
   }
+
+  const sectionHref = (href: string) => (pathname === '/' ? href : `/${href}`)
 
   return (
     <header
@@ -97,7 +101,7 @@ export function SiteHeader({ alwaysSolid = false }: { alwaysSolid?: boolean }) {
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
-              href={link.href}
+              href={sectionHref(link.href)}
               className={cn(
                 'text-sm transition-colors',
                 scrolled || alwaysSolid
@@ -169,7 +173,7 @@ export function SiteHeader({ alwaysSolid = false }: { alwaysSolid?: boolean }) {
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
-              href={link.href}
+              href={sectionHref(link.href)}
               onClick={() => setOpen(false)}
               className="rounded-sm px-2 py-3 text-base text-foreground/80 transition-colors hover:bg-muted hover:text-foreground"
             >

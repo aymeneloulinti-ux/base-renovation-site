@@ -5,11 +5,24 @@ import { CookiePreferencesButton } from '@/components/cookie-consent'
 const FOOTER_NAV = [
   {
     title: 'Services',
-    links: ['Toiture', 'Couverture', 'Zinguerie', 'Isolation', 'Réparation', 'Rénovation extérieure'],
+    links: [
+      { label: 'Toiture', href: '/#services' },
+      { label: 'Couverture', href: '/#services' },
+      { label: 'Zinguerie', href: '/#services' },
+      { label: 'Isolation', href: '/#services' },
+      { label: 'Réparation', href: '/#services' },
+      { label: 'Rénovation extérieure', href: '/#services' },
+    ],
   },
   {
     title: 'Entreprise',
-    links: ['Réalisations', 'Notre méthode', 'Avis clients', 'Zones desservies', 'Demander un devis'],
+    links: [
+      { label: 'Réalisations', href: '/#realisations' },
+      { label: 'Notre méthode', href: '/#methode' },
+      { label: 'Avis clients', href: '/#avis' },
+      { label: 'Zones desservies', href: '/#zones' },
+      { label: 'Demander un devis', href: '/devis' },
+    ],
   },
 ]
 
@@ -46,13 +59,13 @@ export function SiteFooter() {
               </h3>
               <ul className="mt-5 space-y-3">
                 {col.links.map((link) => (
-                  <li key={link}>
-                    <a
-                      href={link === 'Demander un devis' ? '/devis' : '#'}
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
                       className="text-sm text-background/75 transition-colors hover:text-background"
                     >
-                      {link}
-                    </a>
+                      {link.label}
+                    </Link>
                   </li>
                 ))}
               </ul>
