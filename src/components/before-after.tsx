@@ -56,14 +56,18 @@ function BeforeAfterSlider() {
       className="relative aspect-4/3 w-full cursor-ew-resize select-none overflow-hidden rounded-md border border-border md:aspect-video"
       onPointerMove={onPointerMove}
     >
-      {/* After (base) */}
-      <Image
-        src="/images/after.png"
-        alt="Toiture après rénovation : ardoises neuves et zinguerie soignée"
-        fill
-        sizes="(max-width: 1024px) 100vw, 1024px"
-        className="object-cover"
-      />
+      {/* After (base): the right half of one matched source image */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="relative h-full" style={{ width: containerWidth ? containerWidth * 2 : '200%' }}>
+          <Image
+            src="/images/roof-before-after-source.png"
+            alt="Toiture après rénovation : couverture neuve et zinguerie soignée"
+            fill
+            sizes="(max-width: 1024px) 100vw, 1024px"
+            className="object-cover object-right"
+          />
+        </div>
+      </div>
       <span className="absolute right-4 top-4 z-10 rounded-full bg-background/85 px-3 py-1 text-xs font-medium text-foreground backdrop-blur-sm">
         Après
       </span>
@@ -72,11 +76,11 @@ function BeforeAfterSlider() {
       <div className="absolute inset-0 overflow-hidden" style={{ width: `${pos}%` }}>
         <div className="relative h-full" style={{ width: containerWidth ?? '100%' }}>
           <Image
-            src="/images/before.png"
+            src="/images/roof-before-after-source.png"
             alt="Toiture avant rénovation : tuiles usées et abîmées"
             fill
             sizes="(max-width: 1024px) 100vw, 1024px"
-            className="object-cover"
+            className="object-cover object-left"
           />
         </div>
         <span className="absolute left-4 top-4 z-10 rounded-full bg-foreground/85 px-3 py-1 text-xs font-medium text-background backdrop-blur-sm">
