@@ -79,6 +79,8 @@
   --sidebar-accent-foreground: oklch(0.97 0.008 83);
   --sidebar-border: oklch(0.886 0.011 75);
   --sidebar-ring: oklch(0.55 0.062 52);
+  --tile-pattern-light: rgb(234 227 218);
+  --tile-pattern-dark: rgb(248 244 238);
 }
 
 .dark {
@@ -114,6 +116,8 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+  --tile-pattern-light: rgb(39 37 34);
+  --tile-pattern-dark: rgb(51 48 44);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -150,6 +154,8 @@
     --sidebar-accent-foreground: oklch(0.985 0 0);
     --sidebar-border: oklch(1 0 0 / 10%);
     --sidebar-ring: oklch(0.556 0 0);
+    --tile-pattern-light: rgb(39 37 34);
+    --tile-pattern-dark: rgb(51 48 44);
   }
 }
 
@@ -164,15 +170,14 @@
 
 @layer utilities {
   .tile-pattern {
-    background-color: var(--background);
-    background-image:
-      linear-gradient(135deg, color-mix(in oklch, var(--accent) 18%, transparent) 25%, transparent 25%),
-      linear-gradient(225deg, color-mix(in oklch, var(--accent) 18%, transparent) 25%, transparent 25%),
-      linear-gradient(315deg, color-mix(in oklch, var(--accent) 18%, transparent) 25%, transparent 25%),
-      linear-gradient(45deg, color-mix(in oklch, var(--accent) 18%, transparent) 25%, transparent 25%);
-    background-position: 0 0, 0 0, 0 0, 0 0;
-    background-size: 4.5rem 4.5rem;
-    opacity: 0.75;
+    background-color: var(--tile-pattern-light);
+    background-image: conic-gradient(from 45deg,
+      var(--tile-pattern-dark) 25%,
+      var(--tile-pattern-light) 0 50%,
+      var(--tile-pattern-dark) 0 75%,
+      var(--tile-pattern-light) 0
+    );
+    background-size: 6rem 6rem;
   }
   .reveal {
     opacity: 0;

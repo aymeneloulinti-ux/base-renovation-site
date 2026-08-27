@@ -25,7 +25,6 @@ export default function QuotePage() {
       <main className="relative isolate overflow-hidden px-5 pb-24 pt-28 md:pt-36 lg:px-8">
         <div aria-hidden="true" className="tile-pattern absolute inset-0 -z-20" />
         <div aria-hidden="true" className="absolute inset-0 -z-10 bg-background/45" />
-        <div className="absolute inset-0 -z-10 bg-foreground/75" />
         <div className="relative mx-auto max-w-6xl">
           <div className="grid overflow-hidden rounded-lg border border-background/15 bg-foreground/95 shadow-2xl lg:grid-cols-[0.82fr_1.18fr]">
             <section className="flex flex-col justify-between border-b border-background/15 p-7 text-background md:p-12 lg:border-b-0 lg:border-r lg:p-14">
