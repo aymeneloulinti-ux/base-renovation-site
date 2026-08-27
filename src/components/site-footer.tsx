@@ -1,4 +1,5 @@
 import { Mail, MapPin, Phone } from 'lucide-react'
+import Link from 'next/link'
 import { CookiePreferencesButton } from '@/components/cookie-consent'
 
 const FOOTER_NAV = [
@@ -91,15 +92,15 @@ export function SiteFooter() {
         <div className="mt-14 flex flex-col gap-4 border-t border-background/15 pt-7 text-xs text-background/55 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} Maison Delcourt SPRL — TVA BE 0123.456.789</p>
           <nav className="flex flex-wrap gap-x-6 gap-y-2" aria-label="Liens légaux">
-            <a href="#" className="transition-colors hover:text-background">
+            <Link href="/mentions-legales" className="transition-colors hover:text-background">
               Mentions légales
-            </a>
-            <a href="#" className="transition-colors hover:text-background">
+            </Link>
+            <Link href="/politique-confidentialite" className="transition-colors hover:text-background">
               Politique de confidentialité
-            </a>
-            <a href="#" className="transition-colors hover:text-background">
-              Conditions générales
-            </a>
+            </Link>
+            <Link href="/politique-cookies" className="transition-colors hover:text-background">
+              Politique de cookies
+            </Link>
             <CookiePreferencesButton />
           </nav>
         </div>

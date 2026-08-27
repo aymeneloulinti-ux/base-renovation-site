@@ -1,5 +1,3 @@
-'use client'
-
 import { Home, Layers, PaintRoller, Ruler, ShieldCheck, Wrench } from 'lucide-react'
 import { Reveal } from '@/components/reveal'
 
