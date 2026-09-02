@@ -5,6 +5,7 @@ import { useCallback, useEffect, useState, useSyncExternalStore } from 'react'
 const CONSENT_KEY = 'maison-delcourt-cookie-consent'
 const CHANGE_EVENT = 'maison-delcourt:cookie-consent-change'
 const OPEN_EVENT = 'maison-delcourt:open-cookie-preferences'
+const COOKIE_BANNER_ENABLED = false
 
 type Consent = {
   necessary: true
@@ -114,7 +115,7 @@ export function CookieConsent() {
     setIsPreferencesOpen(false)
   }
 
-  const showBanner = !hasConsent && !isPreferencesOpen
+  const showBanner = COOKIE_BANNER_ENABLED && !hasConsent && !isPreferencesOpen
 
   return (
     <>
