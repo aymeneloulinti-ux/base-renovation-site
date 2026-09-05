@@ -12,7 +12,7 @@ const nextConfig = {
           },
           {
             key: 'Content-Security-Policy',
-            value: "frame-ancestors 'self' http://localhost:3000",
+            value: "frame-ancestors 'self' https://web-agency-nine-kohl.vercel.app",
           },
           {
             key: 'Permissions-Policy',
