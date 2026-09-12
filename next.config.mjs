@@ -12,7 +12,7 @@ const nextConfig = {
           },
           {
             key: 'Content-Security-Policy',
-            value: "frame-ancestors 'self' https://web-agency-nine-kohl.vercel.app",
+            value: "frame-ancestors 'self' https://parallele-agency.vercel.app",
           },
           {
             key: 'Permissions-Policy',
